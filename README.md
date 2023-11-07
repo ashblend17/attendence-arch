@@ -1,4 +1,3 @@
-# attendence-afdul
 # Attendence Tracker for LMS
 
 A linux Applet to view your lms Attendence at a glance on the desktop.
