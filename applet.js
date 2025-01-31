@@ -17,8 +17,10 @@ AttendenceApplet.prototype = {
       this.metadata = metadata;
       //add icon to applet firefox
       // this.set_applet_icon_name('firefox');
-
+      //add label to applet
       this.set_applet_label('LMS');
+
+      
 
       this._call_lms();
       this.menu = new Applet.AppletPopupMenu(this, orientation);

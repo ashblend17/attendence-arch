@@ -46,18 +46,35 @@ try_login(session)
 # print(json.dumps(res.json()))
 
 
-res = session.get('https://lms.iiitkottayam.ac.in/mod/attendance/view.php?id=5891&mode=1')
+res = session.get('https://lms.iiitkottayam.ac.in/mod/attendance/view.php?id=11604&mode=1')
 
 atten_soup = BeautifulSoup(res.text, 'html.parser')
 
-rows = atten_soup.find_all('tr')[1:-1]
-
+rows = atten_soup.find_all('tr')[1:]
 res = {}
 for row in rows:
+    C = row.find(class_='colcourse cell c0')
+    if(C == None):
+        continue
     Course = row.find(class_='colcourse cell c0').text
     Percentage = row.find(class_='colpercentagesessionscompleted').text
-    if("ICS123" not in Course and "Calculus" not in Course and int(Course.split(' ')[1]) > 200):
-        res[Course] = Percentage
+    if(Percentage == "-"):
+        continue
+    # course can be format
+    # ICS123
+    # 
+    
+    if("ICS123" not in Course and "Calculus" not in Course  ):
+        num = -1
+        try:
+            # ICS 123
+            num = int(Course.split(" ")[1])
+        except:
+            # ICS123
+            num = int(Course.split(" ")[0]  [3:])
+            
+        if(num > 320):
+            res[Course] = Percentage
 
 
     # print(Course.text,Percentage.text)
