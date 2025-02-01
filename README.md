@@ -1,6 +1,6 @@
 # Attendence Tracker for LMS
 
-A linux Applet to view your lms Attendence at a glance on the desktop.
+An arch implementation of the LMS attendance tracker by @abdul2801
 
 
 ## Demo
